@@ -5,6 +5,45 @@ import { Sidebar } from "./components/Sidebar";
 import "./global.css";
 import styles from "./App.module.css";
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/LaercioSR.png",
+      name: "Laercio Rios",
+      role: "BackEnd Software Engineer @Geodatin",
+    },
+    content: [
+      { type: "paragraph", content: "Fala galeraa 👋" },
+      {
+        type: "paragraph",
+        content:
+          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+      },
+      { type: "link", content: "jane.design/doctorcare" },
+    ],
+    publishedAt: new Date("2022-06-19 10:44:30"),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/diego3g.png",
+      name: "Diego Fernandes",
+      role: "CTO @Rocketseat",
+    },
+    content: [
+      { type: "paragraph", content: "Fala galeraa 👋" },
+      {
+        type: "paragraph",
+        content:
+          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+      },
+      { type: "link", content: "jane.design/doctorcare" },
+    ],
+    publishedAt: new Date("2022-06-20 10:44:30"),
+  },
+];
+
 export function App() {
   return (
     <div>
@@ -13,11 +52,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Laercio Rios"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis officia sint quae autem, dolore commodi, id atque nam at quasi recusandae quod illo sed fugit, excepturi laborum. Nobis, voluptas quia."
-          />
-          <Post author="Diego Fernandes" content="Teste..." />
+          {posts.map((post) => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </main>
       </div>
     </div>
